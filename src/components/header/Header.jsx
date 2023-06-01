@@ -26,7 +26,7 @@ export const Header = ({ toggleHandler }) => {
   return (
     <HeaderStyle>
       <Container>
-        <MealsText>React Meals</MealsText>
+        <MealsText>ReactMeals</MealsText>
         <OrderBasket className={animationClass} toggleHandler={toggleHandler}>
           Your Cart
         </OrderBasket>
@@ -43,7 +43,7 @@ const HeaderStyle = styled.header`
   padding: 22px 120px;
   color: #ffffff;
   top: 0;
-  z-index: 998;
+  z-index: 98;
 
   .bump {
     animation: bump 300ms ease-out;

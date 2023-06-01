@@ -14,8 +14,7 @@ export const MealSummary = memo(() => {
 
 const Container = styled.div`
   width: 100%;
-  height: 432px;
-  margin-top: 101px;
+  /* margin-top: 101px;   */
 
   img {
     width: 100%;

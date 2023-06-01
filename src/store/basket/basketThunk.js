@@ -1,5 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { fetchRequest } from "../../lib/fetchAPI";
+import { snackbarActions } from "../snackbar";
 
 export const getBasket = createAsyncThunk(
   "basket/getBasket",
@@ -25,10 +26,11 @@ export const addItem = createAsyncThunk(
       });
 
       dispatch(getBasket());
-
+      // payload.succesHandler();
       return await response.items;
     } catch (error) {
-      rejectWithValue(error?.response?.message || "Something went wrong!");
+      // payload.errorHandler();
+      return rejectWithValue(error);
     }
   }
 );
@@ -121,11 +123,11 @@ export const decrementFood = createAsyncThunk(
             method: "DELETE",
           }
         );
-
+        dispatch(snackbarActions.deleteItemBasket());
         dispatch(getBasket());
-
         return await response;
       } catch (error) {
+        dispatch(snackbarActions.doError(error));
         rejectWithValue(error?.response?.message || "Something went wrong!");
       }
     }

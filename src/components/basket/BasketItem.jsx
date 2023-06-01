@@ -4,16 +4,27 @@ import { ReactComponent as BasketMinus } from "../../assets/icons/minus.svg";
 import { ReactComponent as BasketPlus } from "../../assets/icons/plus.svg";
 import { decrementFood, incrementFood } from "../../store/basket/basketThunk";
 import { useDispatch } from "react-redux";
+import { snackbarActions } from "../../store/snackbar";
 
 export const BasketItem = ({ title, price, amount, id }) => {
   const dispatch = useDispatch();
 
   const incrementFoodHandler = () => {
-    dispatch(incrementFood({ id: id, amount: amount }));
+    try {
+      dispatch(incrementFood({ id: id, amount: amount }));
+      dispatch(snackbarActions.incrementSucces());
+    } catch (error) {
+      dispatch(snackbarActions.doError(error));
+    }
   };
 
   const decrementFoodHandler = () => {
-    dispatch(decrementFood({ id: id, amount: amount -1}));
+    try {
+      dispatch(decrementFood({ id: id, amount: amount - 1 }));
+      dispatch(snackbarActions.decrementSnackbar());
+    } catch (error) {
+      dispatch(snackbarActions.doError(error));
+    }
   };
 
   return (

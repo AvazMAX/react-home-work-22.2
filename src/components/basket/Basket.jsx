@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { Modal } from '../UI/modal/Modal'
+import { Modalmui } from '../UI/modal/Modal'
 import styled from 'styled-components'
 import { BasketItem } from './BasketItem'
 import { TotalAmount } from './TotalAmount'
@@ -20,7 +20,7 @@ export const Basket = ({ toggleHandler }) => {
   )
 
   return (
-    <Modal onClick={toggleHandler}>
+    <Modalmui onClick={toggleHandler}>
       <Content>
         {items?.length ? (
           <FixedWidthContainer>
@@ -41,7 +41,7 @@ export const Basket = ({ toggleHandler }) => {
         ) : null}
         <TotalAmount toggleHandler={toggleHandler} totalPrice={totalPrice} />
       </Content>
-    </Modal>
+    </Modalmui>
   )
 }
 
